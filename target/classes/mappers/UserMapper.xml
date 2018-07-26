@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club.ak.work.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="club.ak.work.bean.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="created_user" property="createdUser" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="modified_user" property="modifiedUser" jdbcType="VARCHAR" />
+    <result column="modified_time" property="modifiedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, user_name, password, created_user, created_time, modified_user, modified_time
+  </sql>
+  
+  
+  <!-- 用于登录验证用户信息 -->
+  <select id="login" resultMap="BaseResultMap" parameterType="club.ak.work.bean.User" >
+  	select
+  	id, user_name, password, created_user, created_time, modified_user, modified_time
+  	from user
+  	<where>
+  		<if test="username != null and username != ''">
+  			and user_name = #{username,jdbcType=VARCHAR}
+  		</if>
+  		<if test="password != null and password != ''">
+  			and password = #{password,jdbcType=VARCHAR}
+  		</if>
+  	</where>
+  </select>
+  
+  
+  <insert id="register" parameterType="club.ak.work.bean.User" >
+    insert into user (id, user_name, password, 
+      created_user, created_time, modified_user, 
+      modified_time)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{createdUser,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, #{modifiedUser,jdbcType=VARCHAR}, 
+      #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  
+</mapper>

@@ -1,0 +1,32 @@
+body,h1,h2,h3,h4,h5,h6,a,p,li,ul,ol{
+	margin: 0px;padding: 0px;font-family: 微软雅黑;
+}
+body #sqlData #testCode div{
+	margin:10px 0px;color:black;
+}
+body #sqlData #pdCode div{
+	margin:10px 0px;color:black;
+}
+body header{
+	height: 52px;width: 2000px;margin: 0px auto;
+}
+#testCode,#pdCode{
+	padding-left:11%;width:39%;
+}
+.dateModel{
+	margin:3% 15%;
+}
+.first_moto,.second_moto{
+	margin-left:5%;margin-top:15px;
+}
+#testCode textarea{
+	width: 400px;
+    height: 100px;
+}
+#pdCode textarea{
+    width: 400px;
+    height: 100px;
+}
+#submit{
+	margin:10px 40% 40px;color:red;width:20%;
+}
